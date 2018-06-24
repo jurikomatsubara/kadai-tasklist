@@ -1,4 +1,9 @@
 <h1>タスク一覧</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= link_to task.id, task %> : <%= task.content %></li>
+  <% end %>
+</ul>
 
 <% if @tasks.any? %>
   <table class="table table-striped">
@@ -12,7 +17,7 @@
     <tbody>
       <% @tasks.each do |task| %>
         <tr>
-          <td><%= link_to task.id, task %></td>
+          <td><%= link_to task.id, @task %></td>
           <td><%= task.content %></td>
           <td><%= task.status %></td>
         </tr>
@@ -23,3 +28,4 @@
 <% end %>
 
 <%= link_to '新しい課題の投稿', new_task_path, class: "btn btn-primary" %>
+
